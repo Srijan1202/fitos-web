@@ -3,10 +3,10 @@ import Image from "next/image";
 import { DownloadButton } from "./download-button";
 
 const nav = [
-  { href: "/#features", label: "Features" },
-  { href: "/#screens", label: "Screens" },
-  { href: "/#pricing", label: "Pricing" },
-  { href: "/#faq", label: "FAQ" },
+  { href: "/features/", label: "Features" },
+  { href: "/pricing/", label: "Pricing" },
+  { href: "/blog/", label: "Blog" },
+  { href: "/about/", label: "About" },
 ];
 
 /** The brand kit's website header: logo, links, and the lime call to action. */

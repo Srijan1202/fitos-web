@@ -1,10 +1,11 @@
 /**
  * Everything that changes with a release, in one place. To publish a new
- * beta: build it in the app repo (apps/mobile/tool/hosted.ps1), publish the
- * GitHub release with the APK attached, then update `apk` below.
+ * beta: build it in the app repo (apps/mobile/tool/hosted.ps1), update `apk`
+ * below, and deploy with the APK (deploy/deploy.ps1 -Apk <file>): the APK is
+ * served from this site, under /downloads/.
  */
 const releaseTag = 'phase-19-beta-3';
-const apkFile = 'fitos-beta-1.0.0-beta.3-6-12f436e-api.tryfitos.me.apk';
+const apkFile = 'fitos-beta-1.0.0-beta.3-6-cfe8aca-api.tryfitos.me.apk';
 
 export const site = {
   name: 'FITOS',
@@ -15,9 +16,9 @@ export const site = {
     version: '1.0.0-beta.3',
     build: 6,
     sizeBytes: 30_008_819,
-    sha256: '9a00bb3336b76423a43f7fade7f5bccda558b225f860e86a3cd001d0f137ff23',
+    sha256: 'fba4e77adf042cf75ef61fc744174c2bc9a994b6b7553f8412c202dc727cc757',
     file: apkFile,
-    url: `https://github.com/Srijan1202/fitnew/releases/download/${releaseTag}/${apkFile}`,
+    url: `/downloads/${apkFile}`,
     releaseUrl: `https://github.com/Srijan1202/fitnew/releases/tag/${releaseTag}`,
     released: '2026-10-22',
     minAndroid: 'Android 8.0 or newer',

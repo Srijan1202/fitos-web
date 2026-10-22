@@ -62,9 +62,9 @@ export default function DownloadPage() {
               </p>
               <code className="mt-2 block break-all rounded-lg bg-black/40 p-3 text-lime">{a.sha256}</code>
               <p className="mt-2">
-                Release notes are on{" "}
+                What&apos;s new is in the{" "}
                 <a href={a.releaseUrl} className="text-lime underline-offset-4 hover:underline">
-                  GitHub
+                  release notes
                 </a>
                 .
               </p>

@@ -27,8 +27,8 @@ export default async function PrivacyPage() {
         <div className="glass mt-8 p-6">
           <h2 className="text-lg font-semibold">This website</h2>
           <p className="mt-2 leading-relaxed text-white/75">
-            tryfitos.me sets no cookies, runs no analytics and asks for nothing. Downloading the app happens from GitHub,
-            where the files are hosted.
+            tryfitos.me sets no cookies, runs no analytics and asks for nothing. Amazon Web Services hosts it, and
+            keeps standard access logs (address, page, time) for security.
           </p>
         </div>
         <article className="prose-fitos mt-10">

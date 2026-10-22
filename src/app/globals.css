@@ -67,3 +67,10 @@ body {
 .prose-fitos p { color: #c9cfc9; line-height: 1.7; margin: 0.5rem 0; }
 .prose-fitos strong { color: #fff; }
 .prose-fitos a { color: var(--color-lime); }
+.prose-fitos h3 { font-size: 1.1rem; font-weight: 700; margin: 1.5rem 0 0.4rem; color: #fff; }
+.prose-fitos ul, .prose-fitos ol { margin: 0.75rem 0; padding-left: 1.4rem; color: #c9cfc9; line-height: 1.7; }
+.prose-fitos ul { list-style: disc; }
+.prose-fitos ol { list-style: decimal; }
+.prose-fitos li { margin: 0.3rem 0; }
+.prose-fitos li::marker { color: var(--color-lime); }
+.prose-fitos p { font-size: 1.075rem; }
