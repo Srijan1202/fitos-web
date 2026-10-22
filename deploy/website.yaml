@@ -63,6 +63,18 @@ Resources:
                      headers: { location: { value: 'https://${DomainName}' + req.uri } } };
           }
           var uri = req.uri;
+          // Segment prefetches: the browser asks for __next.a.b.__PAGE__.txt,
+          // the static export writes __next.a/b/__PAGE__.txt.
+          var slash = uri.lastIndexOf('/');
+          var leaf = uri.substring(slash + 1);
+          if (leaf.indexOf('__next.') === 0 && leaf.endsWith('.txt') &&
+              leaf !== '__next._full.txt' && leaf !== '__next._tree.txt') {
+            var parts = leaf.substring(7, leaf.length - 4).split('.');
+            if (parts.length > 1) {
+              req.uri = uri.substring(0, slash + 1) + '__next.' + parts.join('/') + '.txt';
+            }
+            return req;
+          }
           if (uri.endsWith('/')) {
             req.uri = uri + 'index.html';
           } else if (uri.split('/').pop().indexOf('.') === -1) {

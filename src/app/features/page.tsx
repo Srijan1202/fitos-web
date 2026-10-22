@@ -102,12 +102,12 @@ export default function FeaturesPage() {
                 <h3 className="eyebrow text-lime">{g.title}</h3>
                 <dl className="mt-5 space-y-5">
                   {g.items.map(([name, desc]) => (
-                    <div key={name} className="flex gap-3">
-                      <Check className="mt-1 h-4 w-4" />
-                      <div>
-                        <dt className="font-semibold">{name}</dt>
-                        <dd className="mt-1 leading-relaxed text-white/70">{desc}</dd>
-                      </div>
+                    <div key={name}>
+                      <dt className="flex items-start gap-3 font-semibold">
+                        <Check className="mt-1 h-4 w-4" />
+                        {name}
+                      </dt>
+                      <dd className="mt-1 pl-7 leading-relaxed text-white/70">{desc}</dd>
                     </div>
                   ))}
                 </dl>

@@ -1,18 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { Barlow } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { site } from "@/site";
 
-// Barlow (SIL OFL, fonts/OFL.txt): the free equivalent of the brand kit's Bahnschrift.
-const barlow = localFont({
-  src: [
-    { path: "./fonts/Barlow-Regular.ttf", weight: "400" },
-    { path: "./fonts/Barlow-Medium.ttf", weight: "500" },
-    { path: "./fonts/Barlow-SemiBold.ttf", weight: "600" },
-    { path: "./fonts/Barlow-Bold.ttf", weight: "700" },
-  ],
+// Barlow (SIL OFL): the free equivalent of the brand kit's Bahnschrift.
+// Downloaded at build time and served from this site as compressed WOFF2
+// subsets; visitors never contact Google.
+const barlow = Barlow({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
   variable: "--font-barlow",
   display: "swap",
 });

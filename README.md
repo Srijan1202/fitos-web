@@ -49,5 +49,5 @@ The admin panel is a separate local app today (`apps/admin` in the app repo). To
 
 - **Screens** (`public/screens/*.webp`): real renders of the app (FITOS Dark), made with the app's widget-test renderer and the real Barlow font, then resized to 720×1560 WebP.
 - **Logo** (`public/brand/`), **favicons** (`src/app/favicon.ico`, `icon.png`, `apple-icon.png`) and the **share image** (`src/app/opengraph-image.png`): from the brand kit (`brand/` in the app repo).
-- **Font**: Barlow (SIL OFL, `src/app/fonts/OFL.txt`), loaded locally with `next/font/local`.
+- **Font**: Barlow (SIL OFL), self-hosted as WOFF2 by `next/font/google` at build time (no request to Google from visitors).
 - **Privacy policy** (`src/content/privacy-policy.md`): the app's policy (`docs/legal/privacy-policy.md` in the app repo), without its internal notes. Keep the two in step.
