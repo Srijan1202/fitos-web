@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FITOS website
 
-## Getting Started
+The marketing site for the FITOS app: what the app does, real screens, pricing, an FAQ, and the **Android APK download**. Built with Next.js 16 (App Router) and Tailwind CSS 4, as a **fully static site**.
 
-First, run the development server:
+This is a separate repository from the app (the FITOS monorepo). The brand assets, fonts and screenshots were copied in from there.
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev            # http://localhost:3000
+pnpm build          # writes the static site to out/
+pnpm lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Path | What |
+| --- | --- |
+| `/` | Hero, features (Train, Fuel, Improve, FITOS AI), more features, screens, pricing, FAQ |
+| `/download/` | The APK with version, size and SHA-256, install steps, requirements |
+| `/privacy/` | "This website collects nothing", then the app's privacy policy |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Publishing a new beta
 
-## Learn More
+1. In the app repo, build the APK (`apps/mobile/tool/hosted.ps1`), then publish the GitHub release with the APK attached.
+2. Update `apk` in [`src/site.ts`](src/site.ts): `releaseTag`, `apkFile`, `version`, `build`, `sizeBytes`, `sha256`, `released`.
+3. `pnpm build` and deploy `out/`.
 
-To learn more about Next.js, take a look at the following resources:
+The download button links to the GitHub release asset, so **the release must be published** (with the file attached under exactly `apkFile`) or the button returns 404.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Where things come from
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Screens** (`public/screens/*.webp`): real renders of the app (FITOS Dark), made with the app's widget-test renderer and the real Barlow font, then resized to 720×1560 WebP.
+- **Logo** (`public/brand/`), **favicons** (`src/app/favicon.ico`, `icon.png`, `apple-icon.png`) and the **share image** (`src/app/opengraph-image.png`): from the brand kit (`brand/` in the app repo).
+- **Font**: Barlow (SIL OFL, `src/app/fonts/OFL.txt`), loaded locally with `next/font/local`.
+- **Privacy policy** (`src/content/privacy-policy.md`): the app's policy (`docs/legal/privacy-policy.md` in the app repo), without its internal notes. Keep the two in step.
 
-## Deploy on Vercel
+## Hosting
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`out/` is plain HTML, CSS and JS, so any static host works: Amazon S3 + CloudFront (next to the beta API), GitHub Pages, Cloudflare Pages or Netlify. Point `tryfitos.me` (Namecheap DNS) at it. `api.tryfitos.me` stays on the API server.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Before going public, read the app's privacy policy: it describes a **closed beta** and lists what has to happen before a public launch.

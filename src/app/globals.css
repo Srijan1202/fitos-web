@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* The FITOS brand kit (brand/README.md in the app repo). */
+@theme {
+  --color-lime: #c6f432;
+  --color-lime-hi: #e4ff52;
+  --color-green: #5bc62a;
+  --color-green-deep: #1e5a1a;
+  --color-carbon: #0a0d0b;
+  --color-graphite: #131814;
+  --color-steel: #262d27;
+  --color-mist: #8e978f;
+  --color-paper: #f5f6f3;
+  --color-ink: #0b0b0c;
+  --font-sans: var(--font-barlow), "Segoe UI", Arial, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-carbon);
+  color: #f3f5f1;
+  font-family: var(--font-sans);
 }
+
+/* A translucent block with a soft lime glow, as in the app (ADR-029). */
+.glass {
+  background: linear-gradient(135deg, rgb(243 245 241 / 0.085), rgb(243 245 241 / 0.035));
+  border: 1px solid rgb(243 245 241 / 0.1);
+  border-radius: 1.5rem;
+  box-shadow:
+    0 10px 30px -12px rgb(198 244 50 / 0.18),
+    0 4px 14px rgb(0 0 0 / 0.3);
+}
+
+.lime-gradient {
+  background: linear-gradient(225deg, var(--color-lime-hi), var(--color-lime) 45%, var(--color-green));
+}
+
+.text-gradient {
+  background: linear-gradient(225deg, var(--color-lime-hi), var(--color-lime) 45%, var(--color-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Two soft pools of green behind a section. */
+.glow-bg {
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, rgb(30 90 26 / 0.55), transparent 70%),
+    radial-gradient(40rem 25rem at -10% 60%, rgb(30 90 26 / 0.25), transparent 70%);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-mist);
+}
+
+/* The policy page's Markdown. */
+.prose-fitos h2 { font-size: 1.35rem; font-weight: 700; margin: 2rem 0 0.5rem; color: #fff; }
+.prose-fitos p { color: #c9cfc9; line-height: 1.7; margin: 0.5rem 0; }
+.prose-fitos strong { color: #fff; }
+.prose-fitos a { color: var(--color-lime); }
