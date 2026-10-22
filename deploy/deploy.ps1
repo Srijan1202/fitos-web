@@ -50,7 +50,7 @@ if ($Apk) {
 
 # Does the domain point at the server? (Caddy can only get a certificate then.)
 function Get-ARecords([string]$Name) {
-  try { @(Resolve-DnsName $Name -Type A -Server 1.1.1.1 -DnsOnly -ErrorAction Stop | Where-Object { $_.Type -eq 'A' } | ForEach-Object { $_.IPAddress }) }
+  try { @(Resolve-DnsName $Name -Type A -Server 1.1.1.1 -DnsOnly -ErrorAction Stop | Where-Object { $_.Section -eq 'Answer' -and $_.Type -eq 'A' } | ForEach-Object { $_.IPAddress }) }
   catch { @() }
 }
 $pointed = $true
