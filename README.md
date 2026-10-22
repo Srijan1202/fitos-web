@@ -23,11 +23,27 @@ pnpm lint
 
 ## Publishing a new beta
 
-1. In the app repo, build the APK (`apps/mobile/tool/hosted.ps1`), then publish the GitHub release with the APK attached.
-2. Update `apk` in [`src/site.ts`](src/site.ts): `releaseTag`, `apkFile`, `version`, `build`, `sizeBytes`, `sha256`, `released`.
-3. `pnpm build` and deploy `out/`.
+1. In the app repo, build the APK (`apps/mobile/tool/hosted.ps1`).
+2. Update `apk` in [`src/site.ts`](src/site.ts): `apkFile`, `version`, `build`, `sizeBytes`, `sha256`, `released` (and `releaseTag` for the notes link).
+3. `.\deploy\deploy.ps1 -Apk <path to the APK>`. It refuses an APK whose name or SHA-256 differs from `site.ts`, so the button never points at the wrong file.
 
-The download button links to the GitHub release asset, so **the release must be published** (with the file attached under exactly `apkFile`) or the button returns 404.
+The APK is served from this site (`https://tryfitos.me/downloads/<file>`), not from GitHub.
+
+## Hosting (AWS)
+
+`out/` is plain HTML, CSS and JS. It's served from a private S3 bucket through CloudFront with HTTPS, in the same AWS account as the FITOS server (stack `fitos-website`, us-east-1, [`deploy/website.yaml`](deploy/website.yaml)).
+
+One-time setup, signed in with `aws login --profile fitos`:
+
+1. `.\deploy\setup.ps1`: requests the certificate and prints two CNAME records. Add them at Namecheap (tryfitos.me, Advanced DNS).
+2. `.\deploy\setup.ps1` again, once the certificate is issued: creates the stack and prints the records that point `tryfitos.me` (ALIAS) and `www` (CNAME) at CloudFront. Replace the old `@` and `www` records (GitHub Pages) with them. Keep `api`.
+3. `.\deploy\deploy.ps1 -Apk <path>`.
+
+After that, every change is `.\deploy\deploy.ps1`. `www.tryfitos.me` redirects to `tryfitos.me`.
+
+## Later: admin controls on the website
+
+The admin panel is a separate local app today (`apps/admin` in the app repo). To bring its controls here, add a signed-in `/admin` area that runs **in the browser**: Firebase sign-in, then calls to `https://api.tryfitos.me/v1/admin/*` with the user's token. That works with this static site, with no server to run. The API keeps enforcing who is an admin. It needs CORS on the API for `https://tryfitos.me`, and pages kept out of search engines.
 
 ## Where things come from
 
@@ -35,9 +51,3 @@ The download button links to the GitHub release asset, so **the release must be 
 - **Logo** (`public/brand/`), **favicons** (`src/app/favicon.ico`, `icon.png`, `apple-icon.png`) and the **share image** (`src/app/opengraph-image.png`): from the brand kit (`brand/` in the app repo).
 - **Font**: Barlow (SIL OFL, `src/app/fonts/OFL.txt`), loaded locally with `next/font/local`.
 - **Privacy policy** (`src/content/privacy-policy.md`): the app's policy (`docs/legal/privacy-policy.md` in the app repo), without its internal notes. Keep the two in step.
-
-## Hosting
-
-`out/` is plain HTML, CSS and JS, so any static host works: Amazon S3 + CloudFront (next to the beta API), GitHub Pages, Cloudflare Pages or Netlify. Point `tryfitos.me` (Namecheap DNS) at it. `api.tryfitos.me` stays on the API server.
-
-Before going public, read the app's privacy policy: it describes a **closed beta** and lists what has to happen before a public launch.
