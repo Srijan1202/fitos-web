@@ -1,0 +1,41 @@
+# The FITOS website on the API server's Caddy (no CloudFront). website.sh
+# writes this, with the domain and the release filled in, as
+# /opt/fitos/caddy/sites/website.caddy; the server's Caddyfile imports
+# sites/*.caddy. Caddy gets and renews the certificates itself.
+__DOMAIN__ {
+	root * /etc/caddy/website/releases/__RELEASE__
+	root /downloads/* /etc/caddy/website/public
+	encode zstd gzip
+
+	header {
+		-Server
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+	}
+	@pages not path /_next/static/* /downloads/*
+	header @pages Cache-Control "public, max-age=0, must-revalidate"
+	header /_next/static/* Cache-Control "public, max-age=31536000, immutable"
+	@apk path /downloads/*.apk
+	header @apk {
+		Content-Type application/vnd.android.package-archive
+		Content-Disposition attachment
+		Cache-Control "public, max-age=31536000, immutable"
+	}
+
+	file_server
+
+	handle_errors 404 {
+		root * /etc/caddy/website/releases/__RELEASE__
+		rewrite * /404.html
+		file_server {
+			status 404
+		}
+	}
+}
+
+www.__DOMAIN__ {
+	header -Server
+	redir https://__DOMAIN__{uri} permanent
+}

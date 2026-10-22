@@ -2,8 +2,8 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: >-
   FITOS website (tryfitos.me): a private S3 bucket behind CloudFront with
   HTTPS, security headers, www -> apex and directory index rewrites. Deploy in
-  us-east-1 (CloudFront certificates must live there). deploy/setup.ps1
-  creates the certificate and this stack; deploy/deploy.ps1 uploads the site.
+  us-east-1 (CloudFront certificates must live there). deploy/cloudfront/setup.ps1
+  creates the certificate and this stack; deploy/cloudfront/deploy.ps1 uploads the site.
 
 Parameters:
   DomainName:

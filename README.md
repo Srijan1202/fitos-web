@@ -31,15 +31,23 @@ The APK is served from this site (`https://tryfitos.me/downloads/<file>`), not f
 
 ## Hosting (AWS)
 
-`out/` is plain HTML, CSS and JS. It's served from a private S3 bucket through CloudFront with HTTPS, in the same AWS account as the FITOS server (stack `fitos-website`, us-east-1, [`deploy/website.yaml`](deploy/website.yaml)).
+`out/` is plain HTML, CSS and JS (`pnpm build` also copies each segment prefetch to the flat name the browser asks for, so any static host serves it as is).
 
-One-time setup, signed in with `aws login --profile fitos`:
+**Now: the FITOS server.** Caddy on the API server (stack `fitos-beta`, Mumbai), which already gives `api.tryfitos.me` its HTTPS, serves `tryfitos.me` too, with its own Let's Encrypt certificate:
 
-1. `.\deploy\setup.ps1`: requests the certificate and prints two CNAME records. Add them at Namecheap (tryfitos.me, Advanced DNS).
-2. `.\deploy\setup.ps1` again, once the certificate is issued: creates the stack and prints the records that point `tryfitos.me` (ALIAS) and `www` (CNAME) at CloudFront. Replace the old `@` and `www` records (GitHub Pages) with them. Keep `api`.
-3. `.\deploy\deploy.ps1 -Apk <path>`.
+- [`deploy/server/website.caddy`](deploy/server/website.caddy): the site (security headers, cache rules, `/downloads/` for the APK, the 404 page, `www` → apex). The server's Caddyfile imports `sites/*.caddy`.
+- [`deploy/server/website.sh`](deploy/server/website.sh): runs on the server through Systems Manager: SHA-256 checks, a release folder, a graceful reload, an HTTPS smoke test, and the previous config back if it fails.
+- [`deploy/server/transfer.yaml`](deploy/server/transfer.yaml): a private bucket that only carries a release to the server through 15-minute links (stack `fitos-website-transfer`). The server's role is unchanged.
 
-After that, every change is `.\deploy\deploy.ps1`. `www.tryfitos.me` redirects to `tryfitos.me`.
+Signed in with `aws login --profile fitos`:
+
+1. `.\deploy\deploy.ps1 -Apk <path>`. Until the domain points at the server, this only puts the files there and prints the DNS records.
+2. At Namecheap (Advanced DNS): `A @ → the server's Elastic IP` in place of the GitHub Pages records; `www` stays a CNAME to `tryfitos.me`. Keep `api`.
+3. `.\deploy\deploy.ps1 -SkipBuild` again: Caddy gets the certificates and the site is served.
+
+After that, every change is `.\deploy\deploy.ps1`.
+
+**Later: CloudFront** ([`deploy/cloudfront/`](deploy/cloudfront/)), once AWS verifies the account for it: a private S3 bucket behind CloudFront (stack `fitos-website`, us-east-1; the certificate is already issued). `cloudfront\setup.ps1` creates the stack and prints the records; `cloudfront\deploy.ps1` publishes.
 
 ## Later: admin controls on the website
 

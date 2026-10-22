@@ -6,19 +6,19 @@
   Run 1 requests the HTTPS certificate for the domain and www and prints the
   two DNS records that prove you own the domain: add them at Namecheap.
   Run it again: once the certificate is issued it creates (or updates) the
-  CloudFormation stack deploy/website.yaml and prints the two records that
+  CloudFormation stack deploy/cloudfront/website.yaml and prints the two records that
   point the domain at CloudFront. Then deploy.ps1 uploads the site.
 
 .EXAMPLE
-  .\deploy\setup.ps1
+  .\deploy\cloudfront\setup.ps1
 #>
 [CmdletBinding()]
 param(
   [string]$AwsProfileName = 'fitos',
   [string]$DomainName = 'tryfitos.me'
 )
-. (Join-Path $PSScriptRoot 'common.ps1')
-Initialize-Aws $AwsProfileName
+. (Join-Path $PSScriptRoot '..\common.ps1')
+Initialize-Aws $AwsProfileName 'us-east-1'
 
 # 1. The certificate: reuse one for this domain, or request it.
 $certs = Invoke-Aws acm list-certificates --certificate-statuses PENDING_VALIDATION ISSUED --output json | ConvertFrom-Json
@@ -65,4 +65,4 @@ Write-Host "`nBucket: $($o.BucketName)  Distribution: $($o.DistributionId)"
 Write-Host "Point the domain at CloudFront. At Namecheap, replace the current @ and www records with:" -ForegroundColor Yellow
 Write-Host "  ALIAS  host: @    value: $($o.DistributionDomainName)"
 Write-Host "  CNAME  host: www  value: $($o.DistributionDomainName)"
-Write-Host "Keep the api record (api -> the server) as it is. Then run .\deploy\deploy.ps1 -Apk <path to the APK>."
+Write-Host "Keep the api record (api -> the server) as it is. Then run .\deploy\cloudfront\deploy.ps1 -Apk <path to the APK>."
