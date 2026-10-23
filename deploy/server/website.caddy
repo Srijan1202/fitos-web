@@ -24,6 +24,11 @@ __DOMAIN__ {
 		Cache-Control "public, max-age=31536000, immutable"
 	}
 
+	# Beta 3.3 (ADR-034): every shared-programme code is the one /p/ page;
+	# the page reads the code from the address.
+	@shared path_regexp ^/p/[2-9A-HJKMNP-Za-hjkmnp-z]{6}/?$
+	rewrite @shared /p/index.html
+
 	file_server
 
 	handle_errors 404 {
