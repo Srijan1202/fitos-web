@@ -43,6 +43,9 @@ export default function DownloadPage() {
                 <div className="mt-1 text-sm text-mist">
                   {apkSizeMb} MB · released {a.released} · {a.minAndroid}
                 </div>
+                <Link href={a.notesUrl} className="mt-2 inline-block text-sm font-semibold text-lime underline-offset-4 hover:underline">
+                  What&apos;s new in this version ›
+                </Link>
               </div>
               <a
                 href={a.url}
