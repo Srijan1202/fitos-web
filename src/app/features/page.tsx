@@ -27,7 +27,7 @@ const groups: { title: string; items: [string, string][] }[] = [
     title: "Food",
     items: [
       ["Targets from your goal", "Calories, protein, carbs, fat and fibre — with the reasoning shown."],
-      ["Indian food, honestly", "Dal, roti, idly and sambhar as realistic ranges; packaged foods measured from USDA; your own foods from their labels."],
+      ["Indian food, honestly", "Dal, roti, idly and sambhar from Indian food tables (IFCT 2017, INDB) and UK CoFID; more foods from USDA; your own foods from their labels. One number, with the range a tap away."],
       ["Your mess menu", "VIT hostel mess menus, every day, and what to eat from them for your targets."],
       ["Diet and allergies", "Vegetarian, eggetarian or not; allergies are hard rules in every suggestion."],
       ["Fast logging", "Recent foods, saved meals, quick add, or describe a meal in words and check it before it's logged."],

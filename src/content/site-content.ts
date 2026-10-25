@@ -28,7 +28,7 @@ export const sections = [
     id: "nutrition",
     eyebrow: "Fuel",
     title: "Food the way you actually eat",
-    body: "Calorie and protein targets from your goal, and a food library that knows dal, roti, idly and sambhar — Indian dishes as honest ranges, the rest measured from USDA. At VIT, your mess menu is already in the app.",
+    body: "Calorie and protein targets from your goal, and a food library that knows dal, roti, idly and sambhar — 1,775 foods from India's IFCT 2017, the Indian Nutrient Databank, UK CoFID and USDA, plus FITOS estimates, each shown as one honest number. At VIT, your mess menu is already in the app.",
     points: [
       "Remaining calories and protein at a glance",
       "Your hostel mess menu, and what to eat from it",
