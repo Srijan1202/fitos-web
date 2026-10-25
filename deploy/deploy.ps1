@@ -12,7 +12,11 @@
        fitos-website-transfer, created on the first run), with 15-minute links;
     3. on the server, through Systems Manager, deploy/server/website.sh:
        download, SHA-256 checks, unpack, Caddy reload, HTTPS smoke, tidy;
-    4. the transfer files deleted; public checks from this PC.
+    4. the transfer files deleted; public checks from this PC;
+    5. with -Apk, once every check passes: "FITOS beta N is out" to every
+       phone with notifications on, through the API on the server (the same
+       send as Admin -> Announce update, once per build). -NoAnnounce skips
+       it; if it fails the site stays published and the button still works.
 
   Until tryfitos.me and www point at the server's Elastic IP, step 3 only
   puts the files in place and this prints the DNS records to set; run it
@@ -28,7 +32,8 @@ param(
   [string]$AwsProfileName = 'fitos',
   [string]$Region = 'ap-south-1',
   [string]$ServerStack = 'fitos-beta',
-  [switch]$SkipBuild
+  [switch]$SkipBuild,
+  [switch]$NoAnnounce
 )
 . (Join-Path $PSScriptRoot 'common.ps1')
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -145,6 +150,22 @@ try {
   }
   if (-not $ok) { Write-Host 'A public check failed (the server-side smoke passed). If only the APK failed, run again with -Apk.' -ForegroundColor Red; exit 1 }
   Write-Host "Published $release at https://$domain/"
+
+  # Beta 3.7 (owner): a new APK is announced as soon as it is served.
+  if ($Apk -and -not $NoAnnounce) {
+    Write-Host '5. announce the update to phones'
+    $announce = @'
+c=$(docker ps --format '{{.Names}}' | grep '^fitos-api-' | head -n 1)
+if [ -z "$c" ]; then echo 'announce: no API container is running'; exit 1; fi
+if ! docker exec "$c" test -f apps/api/dist/scripts/announce-update.js; then echo "announce: $c predates automatic announcements"; exit 1; fi
+docker exec "$c" node apps/api/dist/scripts/announce-update.js
+'@
+    try {
+      Invoke-ServerScript $server.InstanceId $announce 120 | Out-Null
+    } catch {
+      Write-Host 'The site is published, but the update was not announced. Use Admin -> Announce update.' -ForegroundColor Yellow
+    }
+  }
 } finally {
   Pop-Location
 }

@@ -26,6 +26,8 @@ pnpm lint
 1. In the app repo, build the APK (`apps/mobile/tool/hosted.ps1`).
 2. Update `apk` in [`src/site.ts`](src/site.ts): `apkFile`, `version`, `build`, `sizeBytes`, `sha256`, `released` (and `releaseTag` for the notes link).
 3. `.\deploy\deploy.ps1 -Apk <path to the APK>`. It refuses an APK whose name or SHA-256 differs from `site.ts`, so the button never points at the wrong file.
+   - Once the new APK is served and every check passes, it tells every phone with notifications on that the beta is out. That's the same push as Admin → Announce update, sent once per build.
+   - Add `-NoAnnounce` to publish quietly.
 
 The APK is served from this site (`https://tryfitos.me/downloads/<file>`), not from GitHub.
 
