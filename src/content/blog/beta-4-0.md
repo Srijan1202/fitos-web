@@ -4,6 +4,8 @@ date: 2026-10-27
 description: Training now has two halves, Gym and Running. Record a run with GPS, see it on a map with your splits and pace, and share it as a picture or a GPX file for Strava.
 ---
 
+**Update, 28 October: beta 4.0.1.** The **Start** button of a new run sat behind the bottom bar, so you couldn't start a run. It's fixed, and the bottom of your run history no longer hides behind the bar either. [Download beta 4.0.1](/download/). It installs over 4.0 and keeps your runs.
+
 Beta 4.0 is the first part of running in FITOS. Training now has two halves, **Gym** and **Running**, chosen at the top. It opens on Gym as before.
 
 ## Record a run
