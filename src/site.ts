@@ -20,7 +20,7 @@ export const site = {
     file: apkFile,
     url: `/downloads/${apkFile}`,
     releaseUrl: `https://github.com/Srijan1202/fitnew/releases/tag/${releaseTag}`,
-    released: '2026-10-26',
+    released: '2026-10-27',
     /** The blog post on what changed in this version. */
     notesUrl: '/blog/beta-4-0/',
     minAndroid: 'Android 8.0 or newer',
