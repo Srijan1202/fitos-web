@@ -4,8 +4,8 @@
  * below, and deploy with the APK (deploy/deploy.ps1 -Apk <file>): the APK is
  * served from this site, under /downloads/.
  */
-const releaseTag = 'phase-19-beta-3.9';
-const apkFile = 'fitos-beta-1.0.0-beta.3.9-15-31dcabb-api.tryfitos.me.apk';
+const releaseTag = 'phase-19-beta-4.0';
+const apkFile = 'fitos-beta-1.0.0-beta.4.0-16-18d94ec-api.tryfitos.me.apk';
 
 export const site = {
   name: 'FITOS',
@@ -13,16 +13,16 @@ export const site = {
   description:
     'FITOS plans your training, food and recovery from what you log — a programme that progresses with you, Indian food and VIT mess menus, trend weight, and an AI coach. Free Android beta.',
   apk: {
-    version: '1.0.0-beta.3.9',
-    build: 15,
-    sizeBytes: 29_412_686,
-    sha256: 'efc9b94eec05b2878e58e43a513836c110a333400e2ece58857852c61b545613',
+    version: '1.0.0-beta.4.0',
+    build: 16,
+    sizeBytes: 41_044_025,
+    sha256: '7fcdaeb960c03cb9531b627ecb7c7578d772c986a9b682fd626e7888c9a72d30',
     file: apkFile,
     url: `/downloads/${apkFile}`,
     releaseUrl: `https://github.com/Srijan1202/fitnew/releases/tag/${releaseTag}`,
     released: '2026-10-26',
     /** The blog post on what changed in this version. */
-    notesUrl: '/blog/beta-3-9/',
+    notesUrl: '/blog/beta-4-0/',
     minAndroid: 'Android 8.0 or newer',
     device: '64-bit Android phone (almost every phone from the last few years)',
   },
