@@ -4,6 +4,17 @@ date: 2026-10-28
 description: A voice coach that talks you through your run, interval and sprint sessions, 5K, 10K, half-marathon and marathon plans, running in your readiness score, and updates that install from inside the app.
 ---
 
+**Update, 29 October: beta 4.1.1.** Six fixes from your feedback:
+
+- **Changing the app icon** no longer closes FITOS. The new icon appears on your home screen after you leave the app.
+- **On slow or no internet**, pages like Profile and Training open straight away from what's saved on your phone instead of waiting.
+- **The shared run picture** now shows your route, framed to fit, exactly as you see it before you share.
+- **Body measurements in inches:** switch between cm and in on Progress.
+- **Progress photos** can be hidden again after you tap Show photos.
+- **Weekly volume colours** are clearer: blue for too little, green for on track, amber and red for too much.
+
+Open FITOS and tap **Update now** when it asks: this is the first update that installs from inside the app. It keeps all your data.
+
 Beta 4.1 is the second part of running in FITOS. FITOS can now coach a run, not just record it.
 
 ## A voice coach
