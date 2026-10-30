@@ -4,6 +4,8 @@ date: 2026-10-30
 description: A race mode with a pacing plan, ahead-or-behind during the race and a result against your target; cadence from your Galaxy Watch; watch runs that arrive without opening FITOS; 25 more dishes; and rest days, badges and the weight graph fixed.
 ---
 
+**4.9.1:** the first 4.9 closed as soon as it opened. 4.9.1 fixes that. If FITOS won't open for you, [download 4.9.1](/download/) and install it over the top; your data stays.
+
 Beta 4.9 adds race day, more from your Galaxy Watch, and more food. It also fixes three things you told us about.
 
 ## Race day
