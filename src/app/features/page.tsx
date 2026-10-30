@@ -50,7 +50,7 @@ const groups: { title: string; items: [string, string][] }[] = [
       ["Today, decided", "Home shows your next move, and why."],
       ["Reminders that learn", "At most two a day, timed around your routine; cheeky or gentle; quiet hours."],
       ["FITOS AI", "Ask about your own training; explain any suggestion simply (Premium)."],
-      ["Themes", "FITOS Dark, FITOS Light and Paper; Night, Forest and Ocean with Premium."],
+      ["Themes", "FITOS Dark and FITOS Light; Night, Forest and Ocean with Premium."],
       ["Your data", "Download everything as a file, or delete your account and every record of it."],
     ],
   },

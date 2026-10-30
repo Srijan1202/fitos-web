@@ -15,7 +15,7 @@ const compare: [string, boolean, boolean][] = [
   ["Targets, food library and mess menus", true, true],
   ["Trend weight, strength, records, recovery", true, true],
   ["Reminders", true, true],
-  ["FITOS Dark, FITOS Light and Paper themes", true, true],
+  ["FITOS Dark and FITOS Light themes", true, true],
   ["FITOS AI: chat, explain simply, describe a meal", false, true],
   ["Higher AI limits", false, true],
   ["Weekly report", false, true],

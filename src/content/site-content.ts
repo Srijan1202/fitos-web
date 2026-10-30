@@ -74,7 +74,7 @@ export const more = [
   { title: "Works offline", body: "Log a whole workout in a gym basement; it syncs when you're back online." },
   { title: "Reminders that learn", body: "At most two a day, timed around when you usually train and eat. Cheeky or gentle." },
   { title: "Your data is yours", body: "Health Connect data never leaves your phone. Download or delete everything in one tap." },
-  { title: "Made to look good", body: "FITOS Dark, FITOS Light and Paper — plus Night, Forest and Ocean with Premium." },
+  { title: "Made to look good", body: "FITOS Dark and FITOS Light — plus Night, Forest and Ocean with Premium." },
 ];
 
 export const faq = [
@@ -111,7 +111,7 @@ export const freePlan = [
   "Targets, Indian food library and mess menus",
   "Trend weight, strength, records, recovery",
   "Reminders that learn your routine",
-  "FITOS Dark, FITOS Light and Paper themes",
+  "FITOS Dark and FITOS Light themes",
 ];
 
 export const premiumPlan = [
