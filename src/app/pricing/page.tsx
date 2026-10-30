@@ -15,7 +15,7 @@ const compare: [string, boolean, boolean][] = [
   ["Targets, food library and mess menus", true, true],
   ["Trend weight, strength, records, recovery", true, true],
   ["Reminders", true, true],
-  ["FITOS Dark and FITOS Light themes", true, true],
+  ["Dark, Light, Cobalt, FITOS Dark and FITOS Light themes", true, true],
   ["FITOS AI: chat, explain simply, describe a meal", false, true],
   ["Higher AI limits", false, true],
   ["Weekly report", false, true],
@@ -34,7 +34,7 @@ const questions: [string, string][] = [
   ],
   [
     "What happens if Premium ends?",
-    "You keep everything you logged. The Premium features lock again, and a Premium theme switches back to FITOS Dark or FITOS Light.",
+    "You keep everything you logged. The Premium features lock again, and a Premium theme switches back to Dark or Light, whichever your phone is in.",
   ],
 ];
 
