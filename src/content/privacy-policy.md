@@ -1,4 +1,4 @@
-**Version** 2026-10-28.1 · applies to the closed beta
+**Version** 2026-10-30.1 · applies to the closed beta
 
 
 ## Who we are
@@ -11,7 +11,7 @@ Your account (email and name, through Google Firebase sign-in). Your profile: se
 
 ## What stays on your phone
 
-Health Connect data (steps, sleep, heart rate and the rest) is read on your phone and shown there. It is never sent to the FITOS server or to any AI.
+Health Connect data (steps, sleep, heart rate and the rest) is read on your phone and shown there. It is never sent to the FITOS server or to any AI. One exception, only if you switch it on: runs your Galaxy Watch records (through Samsung Health and Health Connect) come into FITOS as runs, with their time, distance, route when shared, and average and maximum heart rate. They are kept with your account like a run recorded in FITOS: in Download my data, and deleted with your account. They are never sent to any AI.
 
 ## Why
 
