@@ -4,6 +4,11 @@ date: 2026-10-31
 description: The exercise demos are clearer after your review (bench press arc, deadlift, overhead press and more), and the home-screen widgets now open the right screen and show all their icons.
 ---
 
+**5.1.1:**
+- **Widgets:** a tap on a widget could still show "Page Not Found" when FITOS was already open. Now it always opens the right screen.
+- **Hammer curl:** has its own demo again, from the front, so you can see the dumbbells stay upright.
+- **All demos in one place:** Profile → About → **Exercise demos** shows every demo together.
+
 Beta 5.1 fixes what you found in 5.0's demos and widgets.
 
 ## Clearer demos
@@ -18,7 +23,6 @@ Beta 5.1 fixes what you found in 5.0's demos and widgets.
 - **Cable fly:** elbows stay soft and out, like hugging a barrel.
 - **Lat pulldown:** now shown from the front, seated, with the wide bar coming down to your chest.
 - **Rear delt fly:** easier to see you're bent over.
-- **Hammer curl:** moves like the curl, with a note to keep your palms facing each other.
 - **Single-arm dumbbell row:** the arm no longer swings up over your back.
 
 ## Widgets
