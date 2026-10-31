@@ -14,7 +14,7 @@ export const sections = [
     id: "training",
     eyebrow: "Train",
     title: "A programme that progresses with you",
-    body: "Let FITOS build your week from your goal, level, days and equipment, pick a proven split like Push / Pull / Legs, or build your own. Every exercise shows the weight and reps to aim for next, and why.",
+    body: "Let FITOS build your week from your goal, level, days and equipment, pick a proven split like Push / Pull / Legs, or build your own. Every exercise shows the weight and reps to aim for next, and why, and 30 lifts show how they're done.",
     points: [
       "Generated, professional or custom programmes",
       "The next load for each lift, from what you logged",
