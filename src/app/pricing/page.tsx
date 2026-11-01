@@ -15,11 +15,11 @@ const compare: [string, boolean, boolean][] = [
   ["Targets, food library and mess menus", true, true],
   ["Trend weight, strength, records, recovery", true, true],
   ["Reminders", true, true],
-  ["Dark, Light, Cobalt, FITOS Dark and FITOS Light themes", true, true],
+  ["Cobalt, Cobalt Light, Dark, Light, FITOS Dark and FITOS Light themes", true, true],
   ["FITOS AI: chat, explain simply, describe a meal", false, true],
   ["Higher AI limits", false, true],
   ["Weekly report", false, true],
-  ["Night, Forest and Ocean themes", false, true],
+  ["Violet, Violet Light, Night, Forest and Ocean themes", false, true],
   ["Premium pictures and the gold rim", false, true],
 ];
 
@@ -34,7 +34,7 @@ const questions: [string, string][] = [
   ],
   [
     "What happens if Premium ends?",
-    "You keep everything you logged. The Premium features lock again, and a Premium theme switches back to Dark or Light, whichever your phone is in.",
+    "You keep everything you logged. The Premium features lock again, and a Premium theme switches back to Cobalt or Cobalt Light, whichever your phone is in.",
   ],
 ];
 
@@ -75,7 +75,7 @@ export default function PricingPage() {
             </div>
           </div>
           <div className="glass relative p-8 ring-1 ring-lime/40">
-            <span className="lime-gradient absolute -top-3 right-6 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-carbon">
+            <span className="lime-gradient absolute -top-3 right-6 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-on-accent">
               Free in beta
             </span>
             <h2 className="text-xl font-semibold">FITOS Premium</h2>

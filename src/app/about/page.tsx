@@ -60,7 +60,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="glass flex flex-col items-start self-start p-8">
-            <Image src="/brand/logomark-bold.svg" alt="" width={72} height={72} />
+            <Image src="/brand/logomark-cobalt.svg" alt="" width={72} height={72} />
             <h2 className="mt-6 text-2xl font-semibold">Built by Srijan Srivastava</h2>
             <p className="mt-3 leading-relaxed text-white/75">
               FITOS is designed, built and run by Srijan Srivastava, an independent developer in India — the app, the server

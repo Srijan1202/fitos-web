@@ -156,7 +156,7 @@ export default function Home() {
             </ul>
           </div>
           <div className="glass relative p-8 ring-1 ring-lime/40">
-            <span className="lime-gradient absolute -top-3 right-6 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-carbon">
+            <span className="lime-gradient absolute -top-3 right-6 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-on-accent">
               Free in beta
             </span>
             <h3 className="text-xl font-semibold">FITOS Premium</h3>
@@ -208,7 +208,7 @@ export default function Home() {
         <div className="glass glow-bg relative overflow-hidden p-10 sm:p-14">
           <div aria-hidden className="lime-gradient absolute -right-10 -top-10 hidden h-[160%] w-16 rotate-[24deg] opacity-80 sm:block" />
           <div className="relative grid items-center gap-8 md:grid-cols-[auto_1fr_auto]">
-            <Image src="/brand/logomark-bold.svg" alt="" width={96} height={96} className="hidden md:block" />
+            <Image src="/brand/logomark-cobalt.svg" alt="" width={96} height={96} className="hidden md:block" />
             <div>
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Start today. Get better every week.</h2>
               <p className="mt-2 text-white/70">Free on Android. Installs in a minute.</p>

@@ -50,7 +50,7 @@ export default function DownloadPage() {
               <a
                 href={a.url}
                 download
-                className="lime-gradient inline-flex h-14 items-center gap-2 rounded-xl px-8 text-lg font-semibold text-carbon shadow-[0_8px_30px_-8px_rgb(198_244_50/0.6)] transition hover:brightness-110"
+                className="lime-gradient inline-flex h-14 items-center gap-2 rounded-xl px-8 text-lg font-semibold text-on-accent shadow-[0_8px_30px_-8px_rgb(46_107_240/0.6)] transition hover:brightness-110"
               >
                 <svg aria-hidden viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.2}>
                   <path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14" strokeLinecap="round" strokeLinejoin="round" />
@@ -78,7 +78,7 @@ export default function DownloadPage() {
           <ol className="mt-6 space-y-4">
             {steps.map((s, i) => (
               <li key={s.title} className="glass flex gap-5 p-5">
-                <span className="lime-gradient flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-bold text-carbon">
+                <span className="lime-gradient flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-bold text-on-accent">
                   {i + 1}
                 </span>
                 <div>

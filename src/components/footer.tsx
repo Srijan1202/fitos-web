@@ -6,7 +6,8 @@ export function Footer() {
     <footer className="border-t border-white/5 bg-graphite/60">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-start md:justify-between">
         <div className="max-w-sm">
-          <Image src="/brand/logo-header.svg" alt="FITOS" width={146} height={36} />
+          <Image src="/brand/logo-header-cobalt.svg" alt="FITOS" width={146} height={36} className="logo-on-dark" />
+          <Image src="/brand/logo-header-cobalt-light.svg" alt="FITOS" width={146} height={36} className="logo-on-light" />
           <p className="mt-4 text-sm leading-relaxed text-mist">
             Training, food and recovery, planned from what you log. Made for students, starting at VIT.
           </p>

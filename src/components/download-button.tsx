@@ -10,7 +10,7 @@ export function DownloadButton({ size = "md", label = "Get the app" }: { size?: 
   return (
     <Link
       href="/download/"
-      className={`lime-gradient inline-flex items-center gap-2 rounded-xl font-semibold text-carbon shadow-[0_8px_30px_-8px_rgb(198_244_50/0.6)] transition hover:brightness-110 ${sizes[size]}`}
+      className={`lime-gradient inline-flex items-center gap-2 rounded-xl font-semibold text-on-accent shadow-[0_8px_30px_-8px_rgb(46_107_240/0.6)] transition hover:brightness-110 ${sizes[size]}`}
     >
       <svg aria-hidden viewBox="0 0 24 24" className="h-[1.1em] w-[1.1em]" fill="none" stroke="currentColor" strokeWidth={2.2}>
         <path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14" strokeLinecap="round" strokeLinejoin="round" />

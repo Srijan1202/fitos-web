@@ -13,7 +13,7 @@ export const navItems = [
 
 const isActive = (pathname: string, href: string) => pathname === href || pathname.startsWith(href);
 
-/** The header links on wide screens, the current page in lime. */
+/** The header links on wide screens, the current page in the accent colour. */
 export function DesktopNav() {
   const pathname = usePathname() ?? "/";
   return (
@@ -77,7 +77,7 @@ export function MobileNav() {
           <Link
             href="/download/"
             onClick={() => setOpen(false)}
-            className="lime-gradient mt-5 flex h-12 items-center justify-center rounded-xl font-semibold text-carbon"
+            className="lime-gradient mt-5 flex h-12 items-center justify-center rounded-xl font-semibold text-on-accent"
           >
             Download for Android
           </Link>

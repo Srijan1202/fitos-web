@@ -1,17 +1,62 @@
 @import "tailwindcss";
 
-/* The FITOS brand kit (brand/README.md in the app repo). */
-@theme {
-  --color-lime: #c6f432;
-  --color-lime-hi: #e4ff52;
-  --color-green: #5bc62a;
-  --color-green-deep: #1e5a1a;
-  --color-carbon: #0a0d0b;
-  --color-graphite: #131814;
-  --color-steel: #262d27;
-  --color-mist: #8e978f;
-  --color-paper: #f5f6f3;
-  --color-ink: #0b0b0c;
+/*
+ * Beta 5.3 (owner): the app's Cobalt themes — true black with cobalt actions,
+ * and Cobalt Light, by the visitor's own dark or light setting. The class
+ * names keep the brand kit's (lime, carbon, white…) so the pages need no
+ * rewrite: each now names a role (the accent, the canvas, the text).
+ */
+:root {
+  --bg: #000000;
+  --surface: #0e1116;
+  --line: #1e2530;
+  --fg: #f2f5fa;
+  --muted: #a9b3c1;
+  --accent: #2e6bf0;
+  --accent-text: #7da8ff;
+  --accent-hi: #6fa2ff;
+  --accent-deep: #1a49b8;
+  --glow: 46 107 240;
+  --glass-a: rgb(242 245 250 / 0.075);
+  --glass-b: rgb(242 245 250 / 0.03);
+  --glass-line: rgb(242 245 250 / 0.1);
+  --glass-shadow: 0 4px 14px rgb(0 0 0 / 0.35);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f8fc;
+    --surface: #ffffff;
+    --line: #d5dce8;
+    --fg: #0b1220;
+    --muted: #475467;
+    --accent: #2e6bf0;
+    --accent-text: #1f56d1;
+    --accent-hi: #5b8ff7;
+    --accent-deep: #1a49b8;
+    --glow: 46 107 240;
+    --glass-a: rgb(255 255 255 / 0.9);
+    --glass-b: rgb(255 255 255 / 0.7);
+    --glass-line: rgb(11 18 32 / 0.08);
+    --glass-shadow: 0 4px 14px rgb(11 18 32 / 0.06);
+    color-scheme: light;
+  }
+}
+
+@theme inline {
+  --color-lime: var(--accent-text);
+  --color-lime-hi: var(--accent-hi);
+  --color-green: var(--accent-deep);
+  --color-green-deep: rgb(var(--glow) / 0.45);
+  --color-carbon: var(--bg);
+  --color-graphite: var(--surface);
+  --color-steel: var(--line);
+  --color-mist: var(--muted);
+  --color-white: var(--fg);
+  --color-on-accent: #ffffff;
+  --color-paper: #f6f8fc;
+  --color-ink: #0b1220;
   --font-sans: var(--font-barlow), "Segoe UI", Arial, sans-serif;
 }
 
@@ -21,37 +66,44 @@ html {
 }
 
 body {
-  background: var(--color-carbon);
-  color: #f3f5f1;
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans);
 }
 
-/* A translucent block with a soft lime glow, as in the app (ADR-029). */
+/* A translucent block with a soft cobalt glow, as in the app (ADR-029). */
 .glass {
-  background: linear-gradient(135deg, rgb(243 245 241 / 0.085), rgb(243 245 241 / 0.035));
-  border: 1px solid rgb(243 245 241 / 0.1);
+  background: linear-gradient(135deg, var(--glass-a), var(--glass-b));
+  border: 1px solid var(--glass-line);
   border-radius: 1.5rem;
   box-shadow:
-    0 10px 30px -12px rgb(198 244 50 / 0.18),
-    0 4px 14px rgb(0 0 0 / 0.3);
+    0 10px 30px -12px rgb(var(--glow) / 0.22),
+    var(--glass-shadow);
 }
 
 .lime-gradient {
-  background: linear-gradient(225deg, var(--color-lime-hi), var(--color-lime) 45%, var(--color-green));
+  background: linear-gradient(225deg, var(--accent-hi), var(--accent) 45%, var(--accent-deep));
 }
 
 .text-gradient {
-  background: linear-gradient(225deg, var(--color-lime-hi), var(--color-lime) 45%, var(--color-green));
+  background: linear-gradient(225deg, var(--accent-hi), var(--accent) 45%, var(--accent-deep));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Two soft pools of green behind a section. */
+/* Two soft pools of cobalt behind a section. */
 .glow-bg {
   background:
-    radial-gradient(60rem 30rem at 85% -10%, rgb(30 90 26 / 0.55), transparent 70%),
-    radial-gradient(40rem 25rem at -10% 60%, rgb(30 90 26 / 0.25), transparent 70%);
+    radial-gradient(60rem 30rem at 85% -10%, rgb(var(--glow) / 0.3), transparent 70%),
+    radial-gradient(40rem 25rem at -10% 60%, rgb(var(--glow) / 0.14), transparent 70%);
+}
+
+/* The logo's two versions: light words on dark, dark words on light. */
+.logo-on-light { display: none; }
+@media (prefers-color-scheme: light) {
+  .logo-on-dark { display: none; }
+  .logo-on-light { display: inline-block; }
 }
 
 .eyebrow {
@@ -63,12 +115,12 @@ body {
 }
 
 /* The policy page's Markdown. */
-.prose-fitos h2 { font-size: 1.35rem; font-weight: 700; margin: 2rem 0 0.5rem; color: #fff; }
-.prose-fitos p { color: #c9cfc9; line-height: 1.7; margin: 0.5rem 0; }
-.prose-fitos strong { color: #fff; }
+.prose-fitos h2 { font-size: 1.35rem; font-weight: 700; margin: 2rem 0 0.5rem; color: var(--fg); }
+.prose-fitos p { color: var(--muted); line-height: 1.7; margin: 0.5rem 0; }
+.prose-fitos strong { color: var(--fg); }
 .prose-fitos a { color: var(--color-lime); }
-.prose-fitos h3 { font-size: 1.1rem; font-weight: 700; margin: 1.5rem 0 0.4rem; color: #fff; }
-.prose-fitos ul, .prose-fitos ol { margin: 0.75rem 0; padding-left: 1.4rem; color: #c9cfc9; line-height: 1.7; }
+.prose-fitos h3 { font-size: 1.1rem; font-weight: 700; margin: 1.5rem 0 0.4rem; color: var(--fg); }
+.prose-fitos ul, .prose-fitos ol { margin: 0.75rem 0; padding-left: 1.4rem; color: var(--muted); line-height: 1.7; }
 .prose-fitos ul { list-style: disc; }
 .prose-fitos ol { list-style: decimal; }
 .prose-fitos li { margin: 0.3rem 0; }
