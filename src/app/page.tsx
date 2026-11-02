@@ -111,7 +111,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <span className="eyebrow">Screens</span>
           <h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">See it before you install it.</h2>
-          <p className="mt-4 max-w-2xl text-white/70">Real screens from the app, in the FITOS Dark theme.</p>
+          <p className="mt-4 max-w-2xl text-white/70">Real screens from the app, in the Cobalt theme.</p>
         </div>
         <div className="mx-auto mt-12 flex max-w-6xl snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-6 sm:px-6">
           {[
