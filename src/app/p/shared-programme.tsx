@@ -22,6 +22,9 @@ interface Programme {
   code: string;
   name: string;
   daysPerWeek: number;
+  /** Beta 6.1: a rolling cycle has days 1…N with no weekdays (absent from older servers). */
+  schedule?: "week" | "cycle";
+  cycleLength?: number | null;
   days: Day[];
 }
 
@@ -71,7 +74,11 @@ export function SharedProgramme() {
     <div className="space-y-8">
       <div>
         <h2 className="text-3xl font-semibold tracking-tight text-white">{p.name}</h2>
-        <p className="mt-1 text-white/60">{p.daysPerWeek} training days a week</p>
+        <p className="mt-1 text-white/60">
+          {p.schedule === "cycle" && p.cycleLength
+            ? `${p.daysPerWeek} sessions in a ${p.cycleLength}-day cycle`
+            : `${p.daysPerWeek} training days a week`}
+        </p>
       </div>
       <div className="space-y-4">
         {p.days
@@ -79,7 +86,7 @@ export function SharedProgramme() {
           .map((d) => (
             <div key={d.dayOfWeek} className="rounded-2xl border border-white/10 bg-white/5 p-5">
               <h3 className="font-semibold text-white">
-                {WEEKDAYS[d.dayOfWeek - 1]} · {d.sessionName}
+                {p.schedule === "cycle" || d.dayOfWeek > 7 ? `Day ${d.dayOfWeek}` : WEEKDAYS[d.dayOfWeek - 1]} · {d.sessionName}
               </h3>
               <ul className="mt-3 space-y-1">
                 {d.exercises.map((x, i) => (
