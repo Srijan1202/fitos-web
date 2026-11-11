@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "me.tryfitos.app",
+      "sha256_cert_fingerprints": [
+        "6D:C7:7A:5D:D3:E2:9B:B7:C7:8B:CF:4A:1B:71:8D:C6:A4:D7:1E:C8:3C:FB:67:48:64:9A:48:4F:63:82:5A:A6",
+        "0F:9A:5A:19:1D:1D:13:F2:F0:B5:90:21:6B:95:97:92:21:65:21:E2:68:A3:2A:EB:3B:7E:6C:FB:99:D1:4C:C2"
+      ]
+    }
+  }
+]

@@ -13,7 +13,13 @@ __DOMAIN__ {
 		X-Content-Type-Options nosniff
 		X-Frame-Options DENY
 		Referrer-Policy strict-origin-when-cross-origin
+		# Beta 6.2 (audit 2026-11-11 S5): only this site's own files, and the API
+		# for shared programmes. Next writes small inline scripts and styles.
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://api.tryfitos.me; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
 	}
+	# Beta 6.2 (owner Q1): Android checks this file before it lets tryfitos.me links open FITOS.
+	@assetlinks path /.well-known/assetlinks.json
+	header @assetlinks Content-Type application/json
 	@pages not path /_next/static/* /downloads/*
 	header @pages Cache-Control "public, max-age=0, must-revalidate"
 	header /_next/static/* Cache-Control "public, max-age=31536000, immutable"
@@ -28,6 +34,14 @@ __DOMAIN__ {
 	# the page reads the code from the address.
 	@shared path_regexp ^/p/[2-9A-HJKMNP-Za-hjkmnp-z]{6}/?$
 	rewrite @shared /p/index.html
+
+	# Beta 6.2 (C8, C15): a club invite (an 8-character code) and a friend's
+	# link (a handle) are each one page that reads the address. With FITOS
+	# installed, Android opens the app instead.
+	@club path_regexp ^/c/[A-HJ-NP-Za-hj-np-z2-9]{8}/?$
+	rewrite @club /c/index.html
+	@friend path_regexp ^/u/[A-Za-z0-9_]{3,20}/?$
+	rewrite @friend /u/index.html
 
 	file_server
 

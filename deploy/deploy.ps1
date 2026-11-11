@@ -137,6 +137,10 @@ try {
     @{ Url = "https://$domain/"; Want = 200 },
     @{ Url = "https://$domain/features/"; Want = 200 },
     @{ Url = "https://$domain/no-such-page/"; Want = 404 },
+    # Beta 6.2: App Links (Android reads this file) and the invite pages.
+    @{ Url = "https://$domain/.well-known/assetlinks.json"; Want = 200 },
+    @{ Url = "https://$domain/c/ABCD2345/"; Want = 200 },
+    @{ Url = "https://$domain/u/fitos_check/"; Want = 200 },
     @{ Url = "https://www.$domain/"; Want = 301 },
     @{ Url = "http://$domain/"; Want = 308 },
     @{ Url = "https://$domain/downloads/$linked"; Want = 200; Method = 'HEAD' }
